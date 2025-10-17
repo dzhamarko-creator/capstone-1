@@ -9,7 +9,7 @@ public class Ledger {
     private static final Scanner scanner = new Scanner(System.in);
     static String fileName = "src/main/resources/transactions.csv";
 
-    ArrayList<Transaction> list = reader();
+    ArrayList<com.plurasight.Transaction> list = reader();
 
     public static void deposits() throws IOException {
         System.out.println("Please enter your deposit information in the following format:");
@@ -106,8 +106,8 @@ public class Ledger {
 
     //...............................................................................................................
     //ledger starts here
-    public static ArrayList<Transaction> reader() {
-        ArrayList<Transaction> transactions = new ArrayList<>();
+    public static ArrayList<com.plurasight.Transaction> reader() {
+        ArrayList<com.plurasight.Transaction> transactions = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
@@ -118,7 +118,7 @@ public class Ledger {
                 String[] data = line.split("\\|");
                 LocalDateTime dateTime = LocalDateTime.parse(data[0] + "|" + data[1], DateTimeFormatter.ofPattern("yyyy-MM-dd|HH:mm:ss"));
                 Double amount = Double.parseDouble(data[4]);
-                Transaction transaction = new Transaction(dateTime, data[2], data[3], amount);
+                com.plurasight.Transaction transaction = new com.plurasight.Transaction(dateTime, data[2], data[3], amount);
                 transactions.add(transaction);
             }
 
@@ -132,10 +132,10 @@ public class Ledger {
 
     public static void allEntries() {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            ArrayList<Transaction> transactions = reader();
+            ArrayList<com.plurasight.Transaction> transactions = reader();
 
             for (int i = transactions.size() - 1; i >= 0; i--) { //initializes variable i, that runs through elements
-                Transaction transaction = transactions.get(i); //This means the loop will run until i reaches 0. i-- ititrates in reverse.
+                com.plurasight.Transaction transaction = transactions.get(i); //This means the loop will run until i reaches 0. i-- ititrates in reverse.
                 System.out.println(transaction);
             }
         } catch (IOException e) {
@@ -145,10 +145,10 @@ public class Ledger {
 
     public static void depositOnly() throws FileNotFoundException {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            ArrayList<Transaction> transactions = reader();
+            ArrayList<com.plurasight.Transaction> transactions = reader();
 
             for (int i = transactions.size() - 1; i >= 0; i--) {
-                Transaction transaction = transactions.get(i);
+                com.plurasight.Transaction transaction = transactions.get(i);
                 if (transaction.getAmount() > 0) {
                     System.out.println(transaction);
                 }
@@ -160,10 +160,10 @@ public class Ledger {
 
     public static void paymentsOnly() throws FileNotFoundException{
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            ArrayList<Transaction> transactions = reader();
+            ArrayList<com.plurasight.Transaction> transactions = reader();
 
             for (int i = transactions.size() - 1; i >= 0; i--) {
-                Transaction transaction = transactions.get(i);
+                com.plurasight.Transaction transaction = transactions.get(i);
                 if (transaction.getAmount() < 0) { //since its a negative number, if less than 0 print
                     System.out.println(transaction);
                 }
