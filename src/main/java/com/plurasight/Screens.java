@@ -27,11 +27,11 @@ public class Screens {
 
         switch (input.toUpperCase()) {
             case "D":
-                Ledger.deposits();
+                com.plurasight.Ledger.deposits();
                 homeScreen();
                 break;
             case "P":
-                Ledger.payments();
+                com.plurasight.Ledger.payments();
                 homeScreen();
                 break;
             case "L":
@@ -66,15 +66,15 @@ public class Screens {
 
         switch (input.toUpperCase()) {
             case "A":
-                Ledger.allEntries();
+                com.plurasight.Ledger.allEntries();
                 homeScreen();
                 break;
             case "D":
-                Ledger.depositOnly();
+                com.plurasight.Ledger.depositOnly();
                 homeScreen();
                 break;
             case "P":
-                Ledger.paymentsOnly();
+                com.plurasight.Ledger.paymentsOnly();
                 homeScreen();
                 break;
             case "R":
@@ -112,21 +112,21 @@ public class Screens {
 
         switch (input.toUpperCase()) {
             case "1":
-                Reports.monthToDate();
+                com.plurasight.Reports.monthToDate();
                 //add (0) go back
                 break;
             case "2":
-                Reports.previousMonth();
+                com.plurasight.Reports.previousMonth();
                 //add (0) go back
                 break;
             case "3":
-                Reports.yearToDate();
+                com.plurasight.Reports.yearToDate();
                 break;
             case "4":
-                Reports.previousYear();
+                com.plurasight.Reports.previousYear();
                 break;
             case "5":
-                Reports.searchByVendor();
+                com.plurasight.Reports.searchByVendor();
                 break;
             case "H":
                 homeScreen();
