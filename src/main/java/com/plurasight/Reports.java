@@ -17,7 +17,7 @@ public class Reports {
     static String fileName = "src/main/resources/transactions.csv";
 
     public static void monthToDate() throws IOException {
-        ArrayList<Transaction> transactions = reader();
+        ArrayList<com.plurasight.Transaction> transactions = reader();
 
         //From month to date, meaning month 5th to 1st date?
         //greater than or equal to the first day of the month, but no greater than today
@@ -27,52 +27,52 @@ public class Reports {
         System.out.println("Month to date:" + firstDayOfMonth);
 
         for (int i = transactions.size() - 1; i >= 0; i--) {
-            Transaction transaction = transactions.get(i);
+            com.plurasight.Transaction transaction = transactions.get(i);
             LocalDate transactionDate = transaction.getDateTime().toLocalDate();
             if (transactionDate.equals(firstDayOfMonth) || transactionDate.isAfter(firstDayOfMonth)) {
                 System.out.println(transaction);
             }
         }
-        Screens.reports();
+        com.plurasight.Screens.reports();
 
     }
 
     public static void previousMonth() throws IOException {
-        ArrayList<Transaction> transactions = reader();
+        ArrayList<com.plurasight.Transaction> transactions = reader();
 
         LocalDate today = LocalDate.now();
         LocalDate previousMonth = today.minusMonths(1);
         LocalDate firstDayOfMonth = today.withDayOfMonth(1);
 
         for (int i = transactions.size() - 1; i >= 0; i--) {
-            Transaction transaction = transactions.get(i);
+            com.plurasight.Transaction transaction = transactions.get(i);
             LocalDate transactionDate = transaction.getDateTime().toLocalDate();
             if (transactionDate.isAfter(previousMonth) && transactionDate.isBefore(firstDayOfMonth)) {
                 System.out.println(transaction);
             }
         }
-        Screens.reports();
+        com.plurasight.Screens.reports();
     }
 
     public static void yearToDate() throws IOException {
-        ArrayList<Transaction> transactions = reader();
+        ArrayList<com.plurasight.Transaction> transactions = reader();
 
         LocalDate today = LocalDate.now();
         LocalDate firstDayOfYear = today.minusYears(1);
 
         for (int i = transactions.size() - 1; i >= 0; i--) {
-            Transaction transaction = transactions.get(i);
+            com.plurasight.Transaction transaction = transactions.get(i);
             LocalDate transactionDate = transaction.getDateTime().toLocalDate();
             if (transactionDate.equals(firstDayOfYear) || transactionDate.isAfter(firstDayOfYear)) {
                 System.out.println(transaction);
             }
 
         }
-        Screens.reports();
+        com.plurasight.Screens.reports();
     }
 
     public static void previousYear() throws IOException {
-        ArrayList<Transaction> transactions = reader();
+        ArrayList<com.plurasight.Transaction> transactions = reader();
 
         LocalDate today = LocalDate.now();
         LocalDate firstDayOfThisYear = today.withDayOfYear(1);
@@ -82,17 +82,17 @@ public class Reports {
 
 
         for (int i = transactions.size() - 1; i >= 0; i--) {
-            Transaction transaction = transactions.get(i);
+            com.plurasight.Transaction transaction = transactions.get(i);
             LocalDate transactionDate = transaction.getDateTime().toLocalDate(); //retrieves the date from a LocalDateTime object associated with a transaction and stores it in a LocalDate
             if (transactionDate.isAfter(firstDayOfLastYear) && transactionDate.isBefore(firstDayOfThisYear)) {
                 System.out.println(transaction);
             }
 
         }
-        Screens.reports();
+        com.plurasight.Screens.reports();
     }
     public static void searchByVendor() throws IOException {
-        ArrayList<Transaction> transactions = reader();
+        ArrayList<com.plurasight.Transaction> transactions = reader();
 
         System.out.println("Enter vendor name to search:");
         String keyword = scanner.nextLine();
@@ -102,7 +102,7 @@ public class Reports {
                 System.out.println(transactions.get(i));
             }
         }
-        Screens.reports();
+        com.plurasight.Screens.reports();
 
     }
 }
